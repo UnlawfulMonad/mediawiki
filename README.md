@@ -8,5 +8,5 @@ expected to be handled by the user.
 
 
 # References
-  - MediaWiki wiki: https://www.mediawiki.org/wiki/MediaWiki
+  - MediaWiki Wiki: https://www.mediawiki.org/wiki/MediaWiki
   - MediaWiki Installation Guide: https://www.mediawiki.org/wiki/Manual:Installation_guide
