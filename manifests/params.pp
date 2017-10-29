@@ -16,8 +16,8 @@ class mediawiki::params (
   String $script_path = '/mediawiki',
   String $server = $facts['fqdn'],
 
-  String $emergency_contact,
-  String $password_sender,
+  String $emergency_contact = '',
+  String $password_sender = '',
 
   String $secret_key,
 
