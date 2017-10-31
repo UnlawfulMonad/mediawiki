@@ -1,7 +1,7 @@
 
 class mediawiki::params (
   Boolean $manage_install = true,
-  Boolean $manage_configuration = true,
+  Boolean $manage_config = true,
 
   String $version = '1.29.1',
   String $db_type = 'postgres',

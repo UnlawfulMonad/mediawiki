@@ -5,7 +5,7 @@ class mediawiki inherits mediawiki::params {
     include mediawiki::install
   }
 
-  if $manage_configuration {
+  if $manage_config {
     include mediawiki::config
   }
 }
