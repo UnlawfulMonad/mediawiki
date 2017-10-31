@@ -11,7 +11,7 @@ class mediawiki::install (
   $packages = [
     'php',
     'php-pgsql',
-    'libapache2-mod-php'
+    'libapache2-mod-php',
     'php-xml',
     'php-mbstring'
   ]
