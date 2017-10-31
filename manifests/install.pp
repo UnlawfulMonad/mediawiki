@@ -28,15 +28,15 @@ class mediawiki::install (
   }
 
   exec { 'enable mbstring module':
-    command => 'phpenmod mbstring',
-    provide => 'shell',
-    require => Package['php-mbstring'],
+    command  => 'phpenmod mbstring',
+    provider => 'shell',
+    require  => Package['php-mbstring'],
   }
 
   exec { 'enable xml module':
-    command => 'phpenmod xml',
-    provide => 'shell',
-    require => Package['php-xml'],
+    command  => 'phpenmod xml',
+    provider => 'shell',
+    require  => Package['php-xml'],
   }
 
   file { '/usr/local/bin/install_mediawiki.sh':
