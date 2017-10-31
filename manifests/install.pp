@@ -29,11 +29,13 @@ class mediawiki::install (
 
   exec { 'enable mbstring module':
     command => 'phpenmod mbstring',
+    provide => 'shell',
     require => Package['php-mbstring'],
   }
 
   exec { 'enable xml module':
     command => 'phpenmod xml',
+    provide => 'shell',
     require => Package['php-xml'],
   }
 
