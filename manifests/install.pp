@@ -1,7 +1,7 @@
 
-class mediawiki::install inherits mediawiki::params (
+class mediawiki::install (
   $ensure = 'present',
-  ) {
+  ) inherits mediawiki::params {
 
   class { 'apache':
     default_vhost   => false,
