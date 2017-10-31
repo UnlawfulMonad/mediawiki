@@ -16,8 +16,8 @@ class mediawiki::install (
     'php-mbstring'
   ]
 
-  package { $packages:
-    require => Class['apache']
+  package { ${packages}:
+    require => Class['apache'],
     ensure  => $ensure,
   }
 
