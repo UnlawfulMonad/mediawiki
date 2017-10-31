@@ -16,7 +16,7 @@ class mediawiki::config inherits mediawiki::params {
   }
 
   file { '/var/lib/mediawiki/LocalSetting.php':
-    mode    => '0640',
+    mode    => '0600',
     owner   => 'www-data',
     group   => 'www-data',
     content => epp('mediawiki/LocalSettings.php.epp');
