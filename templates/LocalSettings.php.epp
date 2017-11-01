@@ -16,116 +16,116 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 ## Uncomment this to disable output compression
-# $wgDisableOutputCompression = true;
+# $mediawiki::params::wgDisableOutputCompression = true;
 
-$wgSitename = "<%= $site_name %>";
-$wgMetaNamespace = "<%= $site_meta_namespace %>";
+$mediawiki::params::wgSitename = "<%= $mediawiki::params::site_name %>";
+$mediawiki::params::wgMetaNamespace = "<%= $mediawiki::params::site_meta_namespace %>";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "<%= $script_path %>";
+$mediawiki::params::wgScriptPath = "<%= $mediawiki::params::script_path %>";
 
 ## The protocol and server name to use in fully-qualified URLs
-<%- if $secured { %>
-$wgServer = "https://<%= $server %>";
+<%- if $mediawiki::params::secured { %>
+$mediawiki::params::wgServer = "https://<%= $mediawiki::params::server %>";
 <%- } else { %>
-$wgServer = "http://<%= $server %>";
+$mediawiki::params::wgServer = "http://<%= $mediawiki::params::server %>";
 <%- } %>
 
 ## The URL path to static resources (images, scripts, etc.)
-$wgResourceBasePath = $wgScriptPath;
+$mediawiki::params::wgResourceBasePath = $mediawiki::params::wgScriptPath;
 
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo = "$wgResourceBasePath/resources/assets/wiki.png";
+$mediawiki::params::wgLogo = "$mediawiki::params::wgResourceBasePath/resources/assets/wiki.png";
 
 ## UPO means: this is also a user preference option
 
-$wgEnableEmail = <%= $enable_email %>;
-$wgEnableUserEmail = <%= $enable_user_email %>; # UPO
+$mediawiki::params::wgEnableEmail = <%= $mediawiki::params::enable_email %>;
+$mediawiki::params::wgEnableUserEmail = <%= $mediawiki::params::enable_user_email %>; # UPO
 
-$wgEmergencyContact = "<%= $emergency_contact %>";
-$wgPasswordSender = "<%= $password_sender %>";
+$mediawiki::params::wgEmergencyContact = "<%= $mediawiki::params::emergency_contact %>";
+$mediawiki::params::wgPasswordSender = "<%= $mediawiki::params::password_sender %>";
 
-$wgEnotifUserTalk = false; # UPO
-$wgEnotifWatchlist = false; # UPO
-$wgEmailAuthentication = <%= $email_authentication %>;
+$mediawiki::params::wgEnotifUserTalk = false; # UPO
+$mediawiki::params::wgEnotifWatchlist = false; # UPO
+$mediawiki::params::wgEmailAuthentication = <%= $mediawiki::params::email_authentication %>;
 
 ## Database settings
-$wgDBtype = "<%= $db_type %>";
-$wgDBserver = "<%= $db_server %>";
-$wgDBname     = "<%= $db_name %>";
-$wgDBuser     = "<%= $db_username %>";
-$wgDBpassword = "<%= $db_password %>";
+$mediawiki::params::wgDBtype = "<%= $mediawiki::params::db_type %>";
+$mediawiki::params::wgDBserver = "<%= $mediawiki::params::db_server %>";
+$mediawiki::params::wgDBname     = "<%= $mediawiki::params::db_name %>";
+$mediawiki::params::wgDBuser     = "<%= $mediawiki::params::db_username %>";
+$mediawiki::params::wgDBpassword = "<%= $mediawiki::params::db_password %>";
 
 # Postgres specific settings
-$wgDBport = "<%= $db_port %>";
-$wgDBmwschema = "<%= $db_schema %>";
+$mediawiki::params::wgDBport = "<%= $mediawiki::params::db_port %>";
+$mediawiki::params::wgDBmwschema = "<%= $mediawiki::params::db_schema %>";
 
 ## Shared memory settings
-$wgMainCacheType = CACHE_NONE;
-$wgMemCachedServers = [];
+$mediawiki::params::wgMainCacheType = CACHE_NONE;
+$mediawiki::params::wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = true;
-$wgUseImageMagick = <%= $enable_imagemagick %>;
-$wgImageMagickConvertCommand = "<%= $imagemagick_convert_command %>";
+$mediawiki::params::wgEnableUploads = true;
+$mediawiki::params::wgUseImageMagick = <%= $mediawiki::params::enable_imagemagick %>;
+$mediawiki::params::wgImageMagickConvertCommand = "<%= $mediawiki::params::imagemagick_convert_command %>";
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
-$wgUseInstantCommons = <%= $enable_instant_commons %>;
+$mediawiki::params::wgUseInstantCommons = <%= $mediawiki::params::enable_instant_commons %>;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
 # with MediaWiki developers to help guide future development efforts.
-$wgPingback = <%= $enable_telemetry %>;
+$mediawiki::params::wgPingback = <%= $mediawiki::params::enable_telemetry %>;
 
 ## If you use ImageMagick (or any other shell command) on a
 ## Linux server, this will need to be set to the name of an
 ## available UTF-8 locale
-$wgShellLocale = "<%= $shell_locale %>";
+$mediawiki::params::wgShellLocale = "<%= $mediawiki::params::shell_locale %>";
 
-## Set $wgCacheDirectory to a writable directory on the web server
+## Set $mediawiki::params::wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
-<%- if $cache_directory != undef { %>
-$wgCacheDirectory = "$IP/<%= $cache_directory %>";
+<%- if $mediawiki::params::cache_directory != undef { %>
+$mediawiki::params::wgCacheDirectory = "$IP/<%= $mediawiki::params::cache_directory %>";
 <%- } %>
 
 # Site language code, should be one of the list in ./languages/data/Names.php
-$wgLanguageCode = "<%= $language %>";
+$mediawiki::params::wgLanguageCode = "<%= $mediawiki::params::language %>";
 
 # TODO CHANGE ME
-$wgSecretKey = "7333edaeb51cd32a1b1caa362cdd36b2ad7d95008b0a43adda2ed893b83e64d4";
+$mediawiki::params::wgSecretKey = "7333edaeb51cd32a1b1caa362cdd36b2ad7d95008b0a43adda2ed893b83e64d4";
 
 # Changing this will log out all existing sessions.
-$wgAuthenticationTokenVersion = "1";
+$mediawiki::params::wgAuthenticationTokenVersion = "1";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "7d20000e31d0653e";
+$mediawiki::params::wgUpgradeKey = "7d20000e31d0653e";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
-$wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
-$wgRightsUrl = "https://www.gnu.org/copyleft/fdl.html";
-$wgRightsText = "GNU Free Documentation License 1.3 or later";
-$wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/gnu-fdl.png";
+$mediawiki::params::wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
+$mediawiki::params::wgRightsUrl = "https://www.gnu.org/copyleft/fdl.html";
+$mediawiki::params::wgRightsText = "GNU Free Documentation License 1.3 or later";
+$mediawiki::params::wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/gnu-fdl.png";
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = "/usr/bin/diff3";
+$mediawiki::params::wgDiff3 = "/usr/bin/diff3";
 
 # The following permissions were set based on your choice in the installer
-$wgGroupPermissions['*']['createaccount'] = <%= $allow_account_creation %>;
-$wgGroupPermissions['*']['edit'] = <%= $allow_edit %>;
+$mediawiki::params::wgGroupPermissions['*']['createaccount'] = <%= $mediawiki::params::allow_account_creation %>;
+$mediawiki::params::wgGroupPermissions['*']['edit'] = <%= $mediawiki::params::allow_edit %>;
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'vector', 'monobook':
-$wgDefaultSkin = "<%= $default_skin %>";
+$mediawiki::params::wgDefaultSkin = "<%= $mediawiki::params::default_skin %>";
 
 # Enabled skins.
 # The following skins were automatically enabled:
