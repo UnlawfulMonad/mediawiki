@@ -91,7 +91,7 @@ $wgShellLocale = "<%= $shell_locale %>";
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
-<%- if $cache_directory != undef {
+<%- if $cache_directory != undef { %>
 $wgCacheDirectory = "$IP/<%= $cache_directory %>";
 <%- } %>
 
