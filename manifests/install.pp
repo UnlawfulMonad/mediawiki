@@ -23,27 +23,28 @@ class mediawiki::install (
 
   if $enable_imagemagick {
     package { 'imagemagick':
-      ensure => $ensure,
+      ensure => $ensure;
     }
   }
 
   exec { 'enable mbstring module':
     command  => 'phpenmod mbstring',
     provider => 'shell',
-    require  => Package['php-mbstring'],
+    require  => Package['php-mbstring'];
   }
 
   exec { 'enable xml module':
     command  => 'phpenmod xml',
     provider => 'shell',
-    require  => Package['php-xml'],
+    require  => Package['php-xml'];
   }
 
   file { '/usr/local/bin/install_mediawiki.sh':
     source => 'puppet:///modules/mediawiki/install_mediawiki.sh',
     mode   => '0755',
     owner  => root,
-    group  => root;
+    group  => root,
+    before => Exec['install mediawiki'];
   }
 
   exec { 'install mediawiki':
@@ -52,7 +53,8 @@ class mediawiki::install (
       Class['apache']
     ],
     provider => 'shell',
-    command  => "/usr/local/bin/install_mediawiki.sh $version";
+    path     => ['/usr/local/bin'],
+    command  => "install_mediawiki.sh $version";
   }
 
   file { '/var/www/html/mediawiki':
