@@ -1,5 +1,6 @@
 
 class mediawiki::config inherits mediawiki::params {
+  include mediawiki::params
 
   file_line { 'php memory_limit':
     ensure => 'present',
