@@ -51,6 +51,7 @@ class mediawiki::install (
       File['/usr/local/bin/install_mediawiki.sh'],
       Class['apache']
     ],
+    provider => 'shell',
     command  => "/usr/local/bin/install_mediawiki.sh $version";
   }
 
