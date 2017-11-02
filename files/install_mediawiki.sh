@@ -11,7 +11,7 @@ VERSION_SHORT=$(echo "$VERSION" | sed -E 's/([0-9]+\.[0-9]+)+\.[0-9]+/\1/g')
 # Skip the first argument
 shift 1
 
-if [[ ! -e /var/lib/mediawiki ]]; then
+if [[ ! -d /var/lib/mediawiki ]]; then
     wget -O '/tmp/mediawiki.tar.gz' "https://releases.wikimedia.org/mediawiki/$VERSION_SHORT/mediawiki-$VERSION.tar.gz"
     tar xvf /tmp/mediawiki.tar.gz
     mkdir /var/lib/mediawiki
@@ -19,6 +19,8 @@ if [[ ! -e /var/lib/mediawiki ]]; then
     rm /tmp/mediawiki.tar.gz
 
     php /var/lib/mediawiki/maintenance/install.php $@
+
+    echo "$VERSION" > /var/lib/mediawiki/version
 fi
 
 if [[ -e "/var/lib/mediawiki/version" ]]; then
