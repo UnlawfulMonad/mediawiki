@@ -6,6 +6,7 @@ class mediawiki::install (
   class { 'apache':
     default_vhost   => false,
     purge_vhost_dir => false,
+    mpm_module      => 'prefork';
   }
 
   $packages = [
@@ -44,16 +45,10 @@ class mediawiki::install (
     mode   => '0755',
     owner  => root,
     group  => root,
-    before => Exec['install mediawiki'];
-  }
-
+  } ->
   exec { 'install mediawiki':
-    require  => [
-      File['/usr/local/bin/install_mediawiki.sh'],
-      Class['apache']
-    ],
-    provider => 'shell',
-    path     => ['/usr/local/bin'],
+    require  => Class['apache'],
+    path     => ['/usr/bin', '/usr/local/bin'],
     command  => "install_mediawiki.sh $version";
   }
 
