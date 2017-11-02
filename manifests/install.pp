@@ -75,7 +75,7 @@ admin \
 --dbuser $db_username \
 --dbpass $db_password \
 --confpath /var/lib/mediawiki \
---lang $language \
+--lang $language
 ",
       creates => '/var/lib/mediawiki/LocalSettings.php';
   } ~>
