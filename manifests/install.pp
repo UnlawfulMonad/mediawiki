@@ -48,12 +48,9 @@ class mediawiki::install (
   } ->
   exec { 'install mediawiki':
     require  => Class['apache'],
-    path     => ['/usr/bin', '/usr/local/bin'],
-    command  => "install_mediawiki.sh $version";
-  }
-
+    command  => "/bin/bash /usr/local/bin/install_mediawiki.sh $version";
+  } ~>
   file { '/var/www/html/mediawiki':
-    subscribe => Exec['install mediawiki'],
     target    => '/var/lib/mediawiki',
     ensure    => link;
   }
