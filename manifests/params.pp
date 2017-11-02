@@ -12,7 +12,6 @@ class mediawiki::params (
   Integer $db_port = 5432,
   String $db_schema = 'mediawiki',
   String $site_name,
-  String $site_meta_namespace,
   String $script_path = '/mediawiki',
   String $server = $facts['fqdn'],
 

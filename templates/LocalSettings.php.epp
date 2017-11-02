@@ -19,7 +19,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # $mediawiki::params::wgDisableOutputCompression = true;
 
 $mediawiki::params::wgSitename = "<%= $mediawiki::params::site_name %>";
-$mediawiki::params::wgMetaNamespace = "<%= $mediawiki::params::site_meta_namespace %>";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
