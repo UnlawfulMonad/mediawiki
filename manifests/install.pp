@@ -41,6 +41,7 @@ class mediawiki::install (
   }
 
   file { '/usr/bin/install_mediawiki.sh':
+    ensure => present,
     source => 'puppet:///modules/mediawiki/install_mediawiki.sh',
     mode   => '0755',
     owner  => root,
@@ -58,22 +59,24 @@ class mediawiki::install (
       Class['apache'],
       File['/usr/bin/install_mediawiki.sh'],
     ],
-    command => "/bin/bash /usr/local/bin/install_mediawiki.sh \
-      $version \
-      admin \
-      --pass admin \
-      --server $server_url \
-      --scriptpath $script_path \
-      --dbtype postgres \
-      --dbserver $db_server \
-      --installdbuser $db_username \
-      --installdbpass $db_password \
-      --dbname $db_name \
-      --dbuser $db_username \
-      --dbpass $db_password \
-      --confpath /var/lib/mediawiki \
-      --lang $language \
-      ",
+    path    => ['/usr/bin', '/bin'],
+    command => "# Puppet's syntax requirements
+/bin/bash /usr/local/bin/install_mediawiki.sh \
+$version \
+admin \
+--pass admin \
+--server $server_url \
+--scriptpath $script_path \
+--dbtype postgres \
+--dbserver $db_server \
+--installdbuser $db_username \
+--installdbpass $db_password \
+--dbname $db_name \
+--dbuser $db_username \
+--dbpass $db_password \
+--confpath /var/lib/mediawiki \
+--lang $language \
+",
       creates => '/var/lib/mediawiki/LocalSettings.php';
   } ~>
   file { '/var/www/html/mediawiki':
