@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+
 # A script to install MediaWiki. This script takes the same parameters
 # as install.php and are passed into it directly.
 
@@ -18,6 +19,10 @@ if [[ ! -d /var/lib/mediawiki ]]; then
     rm /tmp/mediawiki.tar.gz
 
     php /var/lib/mediawiki/maintenance/install.php "${@:2}"
+    if [[ "$?" != "0" ]]; then
+        echo "failed to install mediawiki"
+        exit 1
+    fi
 
     echo "$VERSION" > /var/lib/mediawiki/version
 fi
