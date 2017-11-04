@@ -78,7 +78,7 @@ admin \
 --lang $language
 ",
       creates => '/var/lib/mediawiki/LocalSettings.php';
-  } ~>
+  } ->
   file { '/var/www/html/mediawiki':
     target    => '/var/lib/mediawiki',
     ensure    => link;
