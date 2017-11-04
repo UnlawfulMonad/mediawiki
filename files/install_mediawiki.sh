@@ -22,7 +22,7 @@ if [[ ! -d /var/lib/mediawiki ]]; then
     echo "Mediawiki in place"
     rm /tmp/mediawiki.tar.gz
 
-    php /var/lib/mediawiki/maintenance/install.php "${@:2}"
+    php /var/lib/mediawiki/maintenance/install.php "${@:1}"
     if [[ "$?" != "0" ]]; then
         echo "failed to install mediawiki"
         exit 1
