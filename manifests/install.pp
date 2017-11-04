@@ -45,7 +45,7 @@ class mediawiki::install (
     source => 'puppet:///modules/mediawiki/install_mediawiki.sh',
     mode   => '0755',
     owner  => root,
-    group  => root,
+    group  => root;
   }
 
   if $secured {
@@ -60,7 +60,7 @@ class mediawiki::install (
       File['/usr/bin/install_mediawiki.sh'],
     ],
     path    => ['/usr/bin', '/bin'],
-    command => "/bin/bash /usr/local/bin/install_mediawiki.sh \
+    command => "/bin/bash /usr/bin/install_mediawiki.sh \
 $version \
 admin \
 --pass admin \
@@ -75,8 +75,7 @@ admin \
 --dbpass $db_password \
 --confpath /var/lib/mediawiki \
 --lang $language
-",
-      creates => '/var/lib/mediawiki/LocalSettings.php';
+";
   } ->
   file { '/var/www/html/mediawiki':
     target    => '/var/lib/mediawiki',
