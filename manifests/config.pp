@@ -16,11 +16,14 @@ class mediawiki::config inherits mediawiki::params {
     line   => 'unload_max_filesize = 64M';
   }
 
-  file { '/var/lib/mediawiki/LocalSetting.php':
+  file { '/var/lib/mediawiki/LocalSettings.php':
     mode    => '0600',
     owner   => 'www-data',
     group   => 'www-data',
     content => epp('mediawiki/LocalSettings.php.epp');
   }
 
+  if defined(Class['mediawiki::install']) {
+    Class['mediawiki::install'] -> File['/var/lib/mediawiki/LocalSettings.php']
+  }
 }
