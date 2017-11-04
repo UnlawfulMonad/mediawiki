@@ -1,8 +1,12 @@
 #!/usr/bin/bash
+set -o pipefail
+IFS=$'\n\t'
 
-
-# A script to install MediaWiki. This script takes the same parameters
-# as install.php and are passed into it directly.
+# A script to install MediaWiki.
+# The first parameter is the version. It's used for determining if
+# we should start an upgrade. It is stored in the mediawiki installation
+# directory in a file called `version`.
+# The rest of the parameters are passed into install.php directly.
 
 VERSION="$1"
 
