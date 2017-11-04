@@ -3,6 +3,8 @@ class mediawiki::params (
   Boolean $manage_install = true,
   Boolean $manage_config = true,
 
+  String $basedir = '/var/lib/mediawiki',
+
   String $version = '1.29.1',
   String $db_type = 'postgres',
   String $db_server,
