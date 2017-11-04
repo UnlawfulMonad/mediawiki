@@ -15,7 +15,7 @@ class mediawiki::params (
   String $db_schema = 'mediawiki',
   String $site_name,
   String $script_path = '/mediawiki',
-  String $server = $facts['fqdn'],
+  String $server = $facts['certname'],
 
   String $emergency_contact = '',
   String $password_sender = '',
