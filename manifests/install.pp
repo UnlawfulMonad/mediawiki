@@ -60,8 +60,7 @@ class mediawiki::install (
       File['/usr/bin/install_mediawiki.sh'],
     ],
     path    => ['/usr/bin', '/bin'],
-    command => "# Puppet's syntax requirements
-/bin/bash /usr/local/bin/install_mediawiki.sh \
+    command => "/bin/bash /usr/local/bin/install_mediawiki.sh \
 $version \
 admin \
 --pass admin \
