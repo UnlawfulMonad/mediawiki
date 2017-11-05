@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 ## Uncomment this to disable output compression
-# $mediawiki::params::wgDisableOutputCompression = true;
+# $wgDisableOutputCompression = true;
 
 $wgSitename = "<%= $mediawiki::params::site_name %>";
 
@@ -87,7 +87,7 @@ $wgPingback = <%= $mediawiki::params::enable_telemetry %>;
 ## available UTF-8 locale
 $wgShellLocale = "<%= $mediawiki::params::shell_locale %>";
 
-## Set $mediawiki::params::wgCacheDirectory to a writable directory on the web server
+## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
 <%- if $mediawiki::params::cache_directory != undef { %>
