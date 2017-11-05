@@ -44,6 +44,8 @@ class mediawiki::params (
   Boolean $allow_account_creation = true,
   Boolean $allow_edit = true,
 
+  String $logo_url = "",
+
   Array[String] $skins = ['CologneBlue', 'Modern', 'MonoBook', 'Vector'],
   String $default_skin = 'vector',
   ){
