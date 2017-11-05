@@ -10,6 +10,10 @@ class mediawiki::install (
     mpm_module      => 'prefork';
   }
 
+  class { 'apache::mod::rewrite': }
+  class { 'apache::mod::status': }
+  class { 'apache::mod::php': }
+
   apache::vhost { $mediawiki::params::server:
     port          => 80,
     default_vhost => $default,
@@ -19,9 +23,10 @@ class mediawiki::install (
   }
 
   $packages = [
-    'php',
+    'php7.0',
     'php-pgsql',
     'libapache2-mod-php',
+    'libapache2-mod-php7.0',
     'php-xml',
     'php-mbstring'
   ]
