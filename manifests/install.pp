@@ -1,6 +1,7 @@
 
 class mediawiki::install (
   $ensure = 'present',
+  $default = false,
   ) inherits mediawiki::params {
 
   class { 'apache':
@@ -11,6 +12,7 @@ class mediawiki::install (
 
   apache::vhost { $mediawiki::params::server:
     port          => 80,
+    default_vhost => $default,
     docroot       => '/var/www/html/mediawiki',
     docroot_owner => 'www-data',
     docroot_group => 'www-data',
