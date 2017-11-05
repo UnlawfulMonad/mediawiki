@@ -71,12 +71,10 @@ $wgEnableUploads = true;
 $wgUseImageMagick = <%= $mediawiki::params::enable_imagemagick %>;
 <%- if $mediawiki::params::enable_imagemagick { -%>
 $wgImageMagickConvertCommand = "<%= $mediawiki::params::imagemagick_convert_command %>";
-
 <%- if member($mediawiki::params::file_extensions, 'svg') { -%>
 $wgSVGConverter = "ImageMagick";
-<%- } %>
-
-<%- } %>
+<%- } -%>
+<%- } -%>
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = <%= $mediawiki::params::enable_instant_commons %>;
