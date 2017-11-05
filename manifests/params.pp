@@ -46,6 +46,8 @@ class mediawiki::params (
 
   String $logo_url = "",
 
+  Array[String] $file_extensions = [],
+
   Array[String] $skins = ['CologneBlue', 'Modern', 'MonoBook', 'Vector'],
   String $default_skin = 'vector',
   ){

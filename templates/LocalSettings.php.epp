@@ -69,7 +69,14 @@ $wgMemCachedServers = [];
 ## is writable, then set this to true:
 $wgEnableUploads = true;
 $wgUseImageMagick = <%= $mediawiki::params::enable_imagemagick %>;
+<%- if $mediawiki::params::enable_imagemagick { -%>
 $wgImageMagickConvertCommand = "<%= $mediawiki::params::imagemagick_convert_command %>";
+
+<%- if member($mediawiki::params::file_extensions, 'svg') { -%>
+$wgSVGConverter = "ImageMagick";
+<%- } %>
+
+<%- } %>
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = <%= $mediawiki::params::enable_instant_commons %>;
@@ -125,8 +132,12 @@ $wgDefaultSkin = "<%= $mediawiki::params::default_skin %>";
 
 # Enabled skins.
 # The following skins were automatically enabled:
-<%- $mediawiki::params::skins.each |$skin_name| { %>
+<%- $mediawiki::params::skins.each |$skin_name| { -%>
 wfLoadSkin( '<%= $skin_name %>' );
+<%- } %>
+
+<%- $mediawiki::params::file_extensions.each |$ext| { -%>
+$wgFileExtensions[] = '<%= $ext %>';
 <%- } %>
 
 # Enabled extensions. Most of the extensions are enabled by adding
@@ -135,7 +146,6 @@ wfLoadSkin( '<%= $skin_name %>' );
 # The following extensions were automatically enabled:
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'WikiEditor' );
-
 
 # End of automatically generated settings.
 # Add more configuration options below.
