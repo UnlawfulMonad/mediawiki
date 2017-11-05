@@ -9,6 +9,13 @@ class mediawiki::install (
     mpm_module      => 'prefork';
   }
 
+  apache::vhost { $mediawiki::params::server:
+    port          => 80,
+    docroot       => '/var/www/html/mediawiki',
+    docroot_owner => 'www-data',
+    docroot_group => 'www-data',
+  }
+
   $packages = [
     'php',
     'php-pgsql',
