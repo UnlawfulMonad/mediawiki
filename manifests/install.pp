@@ -77,7 +77,7 @@ class mediawiki::install (
     command => "/bin/bash /usr/bin/install_mediawiki.sh \
 $version \
 admin \
---pass admin \
+--pass puppet123 \
 --server $server_url \
 --scriptpath $script_path \
 --dbtype postgres \
