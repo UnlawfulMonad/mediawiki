@@ -25,6 +25,5 @@ class mediawiki::config inherits mediawiki::params {
 
   if defined(Class['mediawiki::install']) {
     Class['mediawiki::install'] -> File['/var/lib/mediawiki/LocalSettings.php']
-    File['/var/lib/mediawiki/LocalSettings.php'] ~> Class['apache']
   }
 }
