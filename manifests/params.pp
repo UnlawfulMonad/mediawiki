@@ -46,6 +46,8 @@ class mediawiki::params (
 
   String $logo_url = "",
 
+  Array[String] $extensions = ['InputBox', 'WikiEditor'],
+
   Array[String] $file_extensions = [],
 
   Array[String] $skins = ['CologneBlue', 'Modern', 'MonoBook', 'Vector'],

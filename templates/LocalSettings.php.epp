@@ -142,8 +142,9 @@ $wgFileExtensions[] = '<%= $ext %>';
 # wfLoadExtensions('ExtensionName');
 # to LocalSettings.php. Check specific extension documentation for more details.
 # The following extensions were automatically enabled:
-wfLoadExtension( 'InputBox' );
-wfLoadExtension( 'WikiEditor' );
+<%- $mediawiki::params::extensions.each |$ext| { -%>
+wfLoadExtension( '<%= $ext $>' );
+<%- } -%>
 
 # End of automatically generated settings.
 # Add more configuration options below.
